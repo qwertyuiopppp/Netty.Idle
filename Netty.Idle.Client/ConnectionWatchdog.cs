@@ -16,9 +16,7 @@ namespace Netty.Idle.Client
 		private Bootstrap bootstrap;
 		private ITimer timer;
 		private int port;
-
 		private String host;
-
 		private volatile bool reconnect = true;
 		private int attempts;
 
