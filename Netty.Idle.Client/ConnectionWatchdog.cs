@@ -10,7 +10,7 @@ using System.Text;
 
 namespace Netty.Idle.Client
 {
-	public class ConnectionWatchdog : ChannelHandlerAdapter, ITimerTask, IChannelHandlerHolder
+	public class ConnectionWatchdog : ChannelHandlerAdapter, ITimerTask
 	{
 		ConnectorIdleStateTrigger idleStateTrigger = new ConnectorIdleStateTrigger();
 		private Bootstrap bootstrap;
@@ -68,16 +68,7 @@ namespace Netty.Idle.Client
 			}
 		}
 
-		public IChannelHandler[] handlers()
-		{
-			return new IChannelHandler[] {
-				this,new IdleStateHandler(0, 0, 5),
-					idleStateTrigger,
-					new StringDecoder(),
-					new StringEncoder(),
-					new HeartBeatClientHandler()
-			};
-		}
+
 
 		public void Run(ITimeout timeout)
 		{
